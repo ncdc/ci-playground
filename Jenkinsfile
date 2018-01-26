@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'make'
-        googleStorageUpload(credentialsId: 'andy-heptio', bucket: 'ecstatic-ridge-4406', pattern: '**/*.upload', pathPrefix: '/ci-playground')
+        googleStorageUpload(credentialsId: 'andy-heptio', bucket: 'gs://ecstatic-ridge-4406', pattern: '**/*.upload', pathPrefix: '/ci-playground')
       }
     }
   }
