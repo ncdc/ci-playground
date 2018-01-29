@@ -11,7 +11,6 @@ pipeline {
     stage('build') {
       steps {
         withCredentials([file(credentialsId: 'gcs-admin', variable: 'GCP_AUTH')]) {
-          sh 'env | sort'
           sh 'make'
         }
       }
