@@ -4,6 +4,8 @@ pipeline {
     stage('build') {
       steps {
         //withCredentials([file(credentialsId: 'gcs-admin', variable: 'GCP_AUTH')]) {
+          pwd
+          ls -l
           sh 'make'
         //}
       }
