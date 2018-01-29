@@ -7,6 +7,11 @@ pipeline {
     string(name: 'GCP_BUCKET_PREFIX')
   }
 
+  environment {
+    GCP_PROJECT = "${params.GCP_PROJECT}"
+    GCP_BUCKET = "${params.GCP_BUCKET}"
+  }
+
   stages {
     stage('build') {
       steps {
