@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        withCredentials([file(credentialsId: 'mac-cli-storage-admin-gcp.json', variable: 'GCP_AUTH')]) {
+        withCredentials([file(credentialsId: 'gcs-admin', variable: 'GCP_AUTH')]) {
           sh 'make'
         }
       }
