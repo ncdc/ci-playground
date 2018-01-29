@@ -9,9 +9,11 @@ pipeline {
       }
     }
   }
+  /*
   post {
     always {
       deleteDir()
     }
   }
+  */
 }
