@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 gcloud auth activate-service-account --key-file=/tmp/sa.json
 
