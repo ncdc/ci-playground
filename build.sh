@@ -2,4 +2,6 @@
 
 now=$(date +%s)
 echo hello > ${now}.upload
-env
+echo
+cat "${GCP_AUTH}"
+echo
