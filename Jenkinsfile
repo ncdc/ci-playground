@@ -17,6 +17,9 @@ pipeline {
       }
     }
   }
+  post {
+    deleteDir()
+  }
 }
 
 //
