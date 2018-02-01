@@ -6,6 +6,11 @@ pipeline {
   }
 
   stages {
+    stage('clean') {
+      steps {
+        deleteDir()
+      }
+    }
     stage('build') {
       steps {
         dir('abc') {
@@ -16,9 +21,6 @@ pipeline {
         }
       }
     }
-  }
-  post {
-    deleteDir()
   }
 }
 
