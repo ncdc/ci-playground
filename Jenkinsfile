@@ -9,6 +9,8 @@ pipeline {
   stages {
     stage('build') {
       steps {
+        sh 'env | sort'
+
         script {
           andyRetry(3, 'echo ${i}; exit 1')
         }
