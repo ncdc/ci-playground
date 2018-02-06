@@ -9,7 +9,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        v=sh(script: 'git describe --tags --always', returnStdout: true)
+        script {
+          v=sh(script: 'git describe --tags --always', returnStdout: true)
+        }
 
         sh "echo 'v=${v}'"
 
