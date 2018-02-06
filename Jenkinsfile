@@ -1,23 +1,25 @@
 pipeline {
   agent any
 
-  options {
-    skipDefaultCheckout true
-  }
-
   stages {
-    stage('clean') {
-      steps {
-        deleteDir()
-      }
-    }
     stage('build') {
       steps {
-        dir('abc') {
-          checkout scm
-        }
-        dir('def') {
-          git url:'https://github.com/ncdc/etcdstats'
+        script {
+          def rc=0
+          for(int i = 0; i < 3; i++) {
+            if(i < 2) {
+              rc = sh(script: 'exit 1', returnStatus: true)
+            } else {
+              rc = sh(script: 'echo hi', returnStatus: true)
+            }
+            sh "echo rc=${rc}"
+            if(rc == 0) {
+              break
+            }
+          }
+          if(rc != 0) {
+            currentBuild.result = 'FAILED'
+          }
         }
       }
     }
