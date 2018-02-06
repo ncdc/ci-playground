@@ -25,7 +25,7 @@ pipeline {
     stage('build') {
       steps {
         script {
-          andyRetry(3, "echo ${i}; exit 1")
+          andyRetry(3, 'echo ${i}; exit 1')
         }
       }
     }
