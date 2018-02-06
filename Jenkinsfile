@@ -15,9 +15,17 @@ pipeline {
 
         sh "echo 'v=${v}'"
 
+        /*
         script {
           andyRetry(3, 'echo ${i}; exit 1')
         }
+        */
+      }
+    }
+
+    stage('another') {
+      steps {
+        sh "echo 'yo, v=${v}'"
       }
     }
   }
