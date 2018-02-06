@@ -9,7 +9,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'env | sort'
+        v=sh(script: 'git describe --tags --always', returnStdout: true)
+
+        sh "echo 'v=${v}'"
 
         script {
           andyRetry(3, 'echo ${i}; exit 1')
