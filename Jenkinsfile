@@ -10,7 +10,7 @@ pipeline {
             if(i < 2) {
               rc = sh(script: 'exit 1', returnStatus: true)
             } else {
-              rc = sh(script: 'echo hi', returnStatus: true)
+              rc = sh(script: 'exit 2', returnStatus: true)
             }
             sh "echo rc=${rc}"
             if(rc == 0) {
