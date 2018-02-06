@@ -1,3 +1,4 @@
+/*
 def heptioRetry { retry, cmd ->
   def rc=0
 
@@ -13,6 +14,9 @@ def heptioRetry { retry, cmd ->
     currentBuild.result = 'FAILED'
   }
 }
+*/
+
+@Library('andy-jenkins-library')
 
 pipeline {
   agent any
@@ -21,7 +25,7 @@ pipeline {
     stage('build') {
       steps {
         script {
-          heptioRetry(3, 'echo hi')
+          andyRetry(3, 'echo hi')
         }
       }
     }
