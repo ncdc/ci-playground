@@ -11,8 +11,16 @@ pipeline {
 
   stages {
     stage('build') {
+      environment {
+        SKIP_UNIT_TESTS = "${params.SKIP_UNIT_TESTS}"
+        SKIP_COMMAND_TESTS = "${params.SKIP_COMMAND_TESTS}"
+        SKIP_INTEGRATION_TESTS = "${params.SKIP_INTEGRATION_TESTS}"
+        SKIP_E2E_TESTS = "${params.SKIP_E2E_TESTS}"
+        E2E_FOCUS = "${params.E2E_FOCUS}"
+      }
+
       steps {
-				sh 'echo hi'
+        sh 'echo hi'
         sh 'env | sort'
       }
     }
