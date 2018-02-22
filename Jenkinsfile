@@ -13,7 +13,7 @@ pipeline {
     stage('yo') {
       steps {
         script {
-          def env = System.getenv()
+          echo env.JENKINS_URL
           x=""
           if(env['JENKINS_URL'] == 'https://jenkins.dev.hepti.center/') {
             x = "DEV"
