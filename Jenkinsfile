@@ -10,6 +10,21 @@ pipeline {
 	}
 
   stages {
+    stage('yo') {
+      steps {
+        script {
+          def env = System.getenv()
+          x=""
+          if(env['JENKINS_URL'] == 'https://jenkins.dev.hepti.center/') {
+            x = "DEV"
+          } else if(env['JENKINS_URL'] == 'https://jenkins.hepti.center/') {
+            x = "PROD"
+          } else {
+            x = "???"
+          }
+        }
+      }
+    }
     stage('check env vars before copying params to env') {
       steps {
         sh 'env | sort'
@@ -27,6 +42,7 @@ pipeline {
 
       steps {
         sh 'env | sort'
+        echo "${x}"
       }
     }
   }
