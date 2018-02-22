@@ -10,6 +10,12 @@ pipeline {
 	}
 
   stages {
+    stage('check env vars before copying params to env') {
+      steps {
+        sh 'env | sort'
+      }
+    }
+
     stage('build') {
       environment {
         SKIP_UNIT_TESTS = "${params.SKIP_UNIT_TESTS}"
@@ -20,7 +26,6 @@ pipeline {
       }
 
       steps {
-        sh 'echo hi'
         sh 'env | sort'
       }
     }
