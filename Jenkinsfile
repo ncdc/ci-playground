@@ -13,11 +13,10 @@ pipeline {
     stage('yo') {
       steps {
         script {
-          echo env.JENKINS_URL
           x=""
-          if(env['JENKINS_URL'] == 'https://jenkins.dev.hepti.center/') {
+          if(env.JENKINS_URL == 'https://jenkins.dev.hepti.center/') {
             x = "DEV"
-          } else if(env['JENKINS_URL'] == 'https://jenkins.hepti.center/') {
+          } else if(env.JENKINS_URL == 'https://jenkins.hepti.center/') {
             x = "PROD"
           } else {
             x = "???"
