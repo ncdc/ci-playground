@@ -10,9 +10,38 @@ pipeline {
 	}
 
   stages {
-    stage('build') {
+    stage('yo') {
+      steps {
+        script {
+          x=""
+          if(env.JENKINS_URL == 'https://jenkins.dev.hepti.center/') {
+            x = "DEV"
+          } else if(env.JENKINS_URL == 'https://jenkins.hepti.center/') {
+            x = "PROD"
+          } else {
+            x = "???"
+          }
+        }
+      }
+    }
+    stage('check env vars before copying params to env') {
       steps {
         sh 'env | sort'
+      }
+    }
+
+    stage('build') {
+      environment {
+        SKIP_UNIT_TESTS = "${params.SKIP_UNIT_TESTS}"
+        SKIP_COMMAND_TESTS = "${params.SKIP_COMMAND_TESTS}"
+        SKIP_INTEGRATION_TESTS = "${params.SKIP_INTEGRATION_TESTS}"
+        SKIP_E2E_TESTS = "${params.SKIP_E2E_TESTS}"
+        E2E_FOCUS = "${params.E2E_FOCUS}"
+      }
+
+      steps {
+        sh 'env | sort'
+        echo "${x}"
       }
     }
   }
